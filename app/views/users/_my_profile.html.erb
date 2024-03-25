@@ -1,0 +1,19 @@
+     <div class="card profile-card">
+       <div class="card-body">
+          <div class="text-center"><%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "00582.png", size:'100x100'  ,class: 'rounded-circle mb-3'%></div>
+          <h5 class="card-title text-center"><%= user.nickname %></h5>
+          <p class="card-text text-center"><%= user.introduction %></p>
+          <div class="follow">
+            <div class="follow-button">
+              <%= link_to user_lists_follow_list_path(user.id) do %>
+               <%= user.follow.count %>フォロー中
+              <% end %>
+            </div>
+            <div class="follow-button">
+              <%= link_to user_lists_followed_list_path(user.id) do %>
+               <%= user.followed.count %>フォロワー
+              <% end %>
+            </div>
+          </div>
+        </div>
+       </div>

@@ -1,0 +1,34 @@
+<div  class="container">
+  <div class="text-center">
+    <h1 class="mt-5 mb-5">Flog</h1>
+    <div class="search-form mb-5">
+      <%= form_tag(root_path, method: :get) do %>
+      <%= search_field_tag :looking_for, nil, placeholder: '映画を調べる',class: "search-field" %>
+      <%= image_submit_tag("search-2.svg", class: "ml-2")  %>
+      <% end %>
+    </div>
+    <div class="row">
+        <% if @search_results.present? %>
+        <% @search_results.each do |result| %>
+        <div class="col-lg-3 mb-2">
+            <div class="result card">
+                <div class="text-center">
+                  <%= link_to movie_path(result["table"]["id"],class: "link" ) do %>
+                  <p><%= image_tag("https://image.tmdb.org/t/p/w154/" + result["table"]["poster_path"]) %></p>
+                </div>
+                <div class="card-body">
+                  <p><%= result["table"]["title"]%></p>
+                </div>
+                   <% end %>
+            </div>
+          </div>
+          <% end %>
+          <% end %>
+        </div>
+    </div>
+ </div><!--text-center-->
+</div><!--container-->
+
+
+
+

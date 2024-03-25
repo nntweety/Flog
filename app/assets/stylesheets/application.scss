@@ -1,0 +1,222 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+body{
+  padding: 0 70px;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+a:hover{
+  text-decoration: none;
+  color: #808080;
+}
+
+// 新規登録画面
+.form-group{
+  text-align: center;
+
+}
+
+// ヘッダー
+.logo{
+ margin-top: 20px;
+ width: 350px;
+}
+
+// トップ画面
+
+.search-field{
+  border-radius: 5px;
+  background-color: pink;
+  text-align: center;
+}
+
+.search-form > form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result{
+  height: 350px;
+}
+
+.story{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+main{
+ margin-bottom: 200px;
+}
+
+// 映画詳細画面
+.movie-infomation{
+  margin: 30px;
+}
+
+.about-movie{
+  width: 400px;
+  margin: 30px auto;
+}
+
+// Flog投稿画面
+
+.movie-title{
+  margin-bottom: 30px;
+}
+
+// プロフィール欄
+
+.follow-button{
+  margin-top: 5px;
+
+}
+
+.profile-button{
+  margin-top: 10px;
+}
+
+.link{
+  text-decoration: none !important;
+  color: black !important;
+}
+
+// プロフィール編集画面
+
+
+.card{
+  border:inherit;
+  border-radius: 0.8rem;
+  box-shadow: 3px 5px 5px #eee;
+}
+
+// フロッグ一覧画面
+.flog-title{
+  height: 100px;
+  font-weight: bold;
+}
+
+.main-content{
+  margin-bottom: 10px;
+}
+
+.flog-review{
+  height: 120px;
+  over-flow: scroll;
+}
+
+.else-review{
+  height: 140px;
+}
+
+.flog-item{
+  height: 600px;
+}
+
+.else-flog-item{
+  height: 360px;
+}
+
+.profile-card {
+  @media screen and (max-width: 991px) {
+    margin-top: 50px;
+  }
+}
+
+.pagination {
+  margin: 20px;
+  justify-content: center;
+}
+
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+.page-item.active .page-link{
+  color:black;
+  background-color: #93c9ff;
+  border-color:initial;
+}
+
+.page-item:first-child .page-link{
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+}
+
+.page-item:last-child .page-link{
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
+}
+
+// マイリスト
+
+.mylist{
+  height: 400px;
+}
+
+.card-body{
+  position: relative;
+}
+
+.image-area{
+  min-height: 231px;
+}
+
+.mylist-delete-button{
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
+
+.likes{
+  color: pink;
+}
+
+@media screen and (max-width: 425px) {
+  .logo{
+    width: 200px;
+  }
+
+  .movie_poster{
+    width: 200px;
+  }
+
+}
+
+
+

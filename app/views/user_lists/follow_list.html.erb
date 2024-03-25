@@ -1,0 +1,14 @@
+<div class="container-fluid">
+ <div class="row">
+  <div class="col-lg-6 offset-lg-3 text-center">
+     <h3 class="text-center m-5"><%= @user.nickname%>さんのフォロー中</h3>
+      <% @follow_user.each do |user| %>
+        <% list = User.find_by(id: user.followed_id) %>
+       <%= link_to user_path(list.id) do%>
+        <%= attachment_image_tag list, :image, :fill, 100, 100, fallback: "00582.png",size:'100x100' ,class: 'rounded-circle'%>
+        <%= list.nickname %>
+       <% end %>
+      <%end%>
+   </div>
+ </div>
+</div>

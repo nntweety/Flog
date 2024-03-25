@@ -1,0 +1,67 @@
+<div class="container-fluid">
+ <h3 class="text-center m-5">Flogs</h3>
+  <div class="row">
+    <div class="col-lg-2 text-center">
+      <div class="card profile-card">
+        <div class="card-body">
+          <div class="text-center mb-4"><%= image_tag("https://image.tmdb.org/t/p/w154/" + @movie_poster ) %></div>
+          <h5 class="card-title"><%= @movie_title %></h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-10">
+      <div class="row">
+        <% @flogs.each do |flog| %>
+        <div class="col-lg-4 mb-2">
+          <div class="else-flog-item card p-3">
+            <div class="">
+              <%if current_user%>
+                <% if current_user.id == flog.user.id %>
+                <%= link_to flogs_path do %>
+                　<%= attachment_image_tag flog.user, :image, :fill, 60, 60, fallback: "00582.png", size:'60x60',class: 'rounded-circle' %>
+                <%= flog.user.nickname %>
+                <% end %>
+                <% else %>
+                <%= link_to user_path(flog.user) do %>
+                　<%= attachment_image_tag flog.user, :image, :fill, 60, 60, fallback: "00582.png",size:'60x60',class: 'rounded-circle' %>
+                <%= flog.user.nickname %>
+                <% end %>
+                <% end %>
+              <%else%>
+              <%= link_to user_path(flog.user) do %>
+                　<%= attachment_image_tag flog.user, :image, :fill, 60, 60, fallback: "00582.png",size:'60x60',class: 'rounded-circle' %>
+                <%= flog.user.nickname %>
+                <% end %>
+
+              <% end %>
+
+            </div>
+            <div class="card-body">
+              <div class="card-text mb-3">
+                <span id="star-rate-<%= flog.id %>"></span>
+                <script>
+                  $('#star-rate-<%= flog.id %>').raty({
+                    size: 36,
+                    starOff: "<%= asset_path('star-off.png') %>",
+                    starOn: "<%= asset_path('star-on.png') %>",
+                    starHalf: "<%= asset_path('star-half.png') %>",
+                    half: true,
+                    readOnly: true,
+                    score: <%= flog.score %>
+                  });
+                </script>
+              </div>
+              <p class="card-text else-review"><%= flog.review %></p>
+              <div class="card-text"><%= flog.created_at.strftime('%Y/%m/%d') %></div>
+              <div id="favorite_buttons_<%= flog.id %>", class="card-text">
+                <%= render "flogs/like", flog: flog %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= paginate @flogs %>

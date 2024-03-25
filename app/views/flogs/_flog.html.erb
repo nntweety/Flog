@@ -1,0 +1,47 @@
+    <div class="row">
+        <% user.wrriten_flogs.each do |flog| %>
+          <div class="col-lg-4 mb-2">
+            <div class="flog-item card p-3">
+              <div class="text-center image-area">
+                <%= link_to movie_path(flog.movie_id) do %>
+                  <%= image_tag("https://image.tmdb.org/t/p/w154/" + flog.movie_poster ) %>
+                <% end %>
+              </div>
+              <div class="card-body">
+                <div class="card-title text-center flog-title ">
+                  <h6><%= flog.movie_title %></h6>
+                      <div class="card-text mb-3 text-center">
+                        <span id="star-rate-<%= flog.id %>"></span>
+                        <script>
+                          $('#star-rate-<%= flog.id %>').raty({
+                            size: 36,
+                            starOff: "<%= asset_path('star-off.png') %>",
+                            starOn: "<%= asset_path('star-on.png') %>",
+                            starHalf: "<%= asset_path('star-half.png') %>",
+                            half: true,
+                            readOnly: true,
+                            score: <%= flog.score %>
+                          });
+                        </script>
+                      </div>
+                  </div>
+                  <div class="main-content">
+                    <p class="card-text flog-review"><%= flog.review %></p>
+                    <div class="card-text"><%= flog.likes.count %> いいね </div>
+                    <span class="card-text"><%= flog.created_at.strftime('%Y/%m/%d') %></span>
+                    <div>
+                      <%= link_to edit_flog_path(flog.id) do %>
+                        <%= image_tag("edit.svg") %>
+                      <% end %>
+                      <%= link_to flog_path(flog.id), method: :delete do %>
+                        <%= image_tag("trash-3.svg") %>
+                      <% end %>
+                    </div>
+                 </div>
+                <% sleep 0.3 %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+   

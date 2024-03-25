@@ -1,0 +1,19 @@
+  <%if current_user%>
+    <% if flog.liked_by?(current_user) %>
+    <p>
+      <%= link_to flog_likes_path(flog.id), method: :delete, class:'likes', remote: true do %>
+      ♥　<%= flog.likes.count %>
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to flog_likes_path(flog.id), method: :post, remote: true do %>
+      ♡　<%= flog.likes.count %>
+      <% end %>
+    </p>
+    <% end %>
+  <%else%>
+     <%= link_to new_user_session_path do %>
+      ♡　<%= flog.likes.count %>
+      <% end %>
+  <%end%>

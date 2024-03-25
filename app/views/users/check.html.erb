@@ -1,0 +1,12 @@
+<div class="container-fluid mt-5">
+	<div class="row">
+		<div class="col-lg-8 offset-lg-2 text-center">
+			<h3 class="section-ttl mb-4">本当に退会しますか？</h3>
+			<h4 class="text-center mb-4">退会するとこれまでのFlogやMyListsを見ることができなくなります。<br>退会する場合は、「退会する」をクリックしてください。</h4>
+			<div class="flex justify-around mt2">
+				<%= link_to "Top画面に戻る", root_path, class: "btn btn-primary" %>
+				<%= link_to "退会する", user_withdraw_path, method: :patch, "data-confirm" => "OKを押すと退会処理がされます。本当によろしいですか？", class: "btn btn-danger" %>
+			</div>
+		</div>
+	</div>
+</div>

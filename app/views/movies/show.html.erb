@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2 text-center">
+      <div class="movie-infomation">
+        <h1><%= @movie_title %></h1>
+        <div class="about-movie">
+          <p class="movie_poster"><%= image_tag("https://image.tmdb.org/t/p/w200/" + @movie_poster) %></p>
+          <p class="story"><%=  @movie_story %></p>
+          <% if current_user  %>
+            <% if current_user.wrriten_flogs.where(movie_id: params[:id]).exists? %>
+    
+            <% elsif current_user.my_lists.where(movie_id: params[:id]).exists? %>
+              <%= link_to "Flog", new_flog_path(id: @search.id), class:"btn btn-light" %>
+            <% else %>
+              <%= link_to "Flog", new_flog_path(id: @search.id), class:"btn btn-light" %>
+              <%= link_to "MyList", mylists_path(id: @search.id), method: :post, class:"btn btn-light" %>
+            <% end %>
+          <%else%>
+              <%= link_to "Flog", new_user_session_path, class:"btn btn-light" %>
+              <%= link_to "MyList", new_user_session_path, class:"btn btn-light" %>
+    
+          <%end%>
+              <%= link_to "他の人のFlogを見る", flog_path(@search.id), class:"btn btn-light"%>
+        </div>
+      </div>    
+    </div>
+   </div>    
+  </div>

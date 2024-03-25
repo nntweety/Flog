@@ -1,0 +1,12 @@
+<div class="container-fluid">
+  <h3 class="text-center  m-5">Flogs</h3>
+  <div class="row">
+    <div class="col-lg-2">
+     <%= render 'users/my_profile', user: @user %>
+    </div>
+    <div class="col-lg-10">
+     <%= render 'flogs/flog', user: @user %>
+     <%= paginate @flogs%>
+    </div>
+</div>
+</div>
